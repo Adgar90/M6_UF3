@@ -9,8 +9,10 @@
 <body>
     <div class="drop-area" draggable="true">
         <h2>Drag & Drop files</h2>
-        <button>Upload files</button>
-        <input type="file" name="inputFiles[]" id="input-file" hidden multiple />
+        <form action="data.php" method="post" enctype="multipart/form-data">
+            <button>Upload files</button>
+            <input type="file" name="inputFiles[]" id="input-file" hidden multiple />
+        </form>
     </div>
     <div id="preview"></div>
     <script src="js/script.js"></script>
