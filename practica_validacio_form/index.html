@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registre</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form action="" method="post">
+        <label for="inputName">Nom<br>
+            <input type="text" id="inputName" required><br>
+            <span hidden>Error: el nom no és vàlid.</span><br>
+        </label>
+        <label for="inputEmail" id="labelEmail">Email<br>
+            <input type="email" id="inputEmail" required><br>
+            <span hidden>Error: l'email no és vàlid.</span><br>
+        </label>
+        <label for="inputCode">Codi Postal<br>
+            <input type="text" id="inputCode" required><br>
+            <span hidden>Error: el codi postal no és vàlid.</span><br>
+        </label>
+        <label for="inputPass">Contrassenya<br>
+            <input type="text" id="inputPass" required><br>
+            <span hidden>Error: la constrassenya no és vàlid.</span><br>
+        </label>
+        <label for="inputPassEqual">Repeteix contrassenya<br>
+            <input type="text" id="inputPassEqual" required><br>
+            <span hidden>Error: la contrassenya no és igual.</span><br>
+        </label>
+    </form>
+    <script src="js/script.js"></script>
+</body>
+</html>
