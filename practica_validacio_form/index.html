@@ -10,7 +10,7 @@
     <form action="" method="post">
         <label for="inputName">Nom<br>
             <input type="text" id="inputName" required><br>
-            <span id="span0" hidden>Error: el nom no és vàlid.</span><br>
+            <span hidden>Error: el nom no pot estar buit.</span><br>
         </label>
         <label for="inputEmail" id="labelEmail">Email<br>
             <input type="email" id="inputEmail" required><br>
@@ -18,17 +18,23 @@
         </label>
         <label for="inputCode">Codi Postal<br>
             <input type="text" id="inputCode" required><br>
-            <span id="span2" hidden>Error: el codi postal no és vàlid.</span><br>
+            <span hidden>Error: el codi postal no pot estar buit.</span><br>
         </label>
         <label for="inputPass">Contrassenya<br>
             <input type="text" id="inputPass" required><br>
-            <span id="span3" hidden>Error: la constrassenya no és vàlid.</span><br>
+            <ul hidden>
+                <li>8 caràcters mínim</li>
+                <li>1 lletra mayúscula</li>
+                <li>1 lletra minúscula</li>
+                <li>1 digit</li>
+                <li>1 caràcter especial</li>
+            </ul><br>
         </label>
         <label for="inputPassEqual">Repeteix contrassenya<br>
             <input type="text" id="inputPassEqual" required><br>
-            <span id="span4" hidden>Error: la contrassenya no és igual.</span><br>
+            <span hidden>Error: la contrassenya no coincideix</span><br>
         </label>
-        <button type="submit">Enviar</button>
+        <button>Enviar</button>
     </form>
     <script src="js/script.js"></script>
 </body>
