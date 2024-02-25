@@ -6,6 +6,7 @@ let spans = document.querySelectorAll("span");
 let ul = document.querySelector("ul");
 let liCollection = document.querySelectorAll("li");
 let form = document.querySelector("form");
+let msgError = document.getElementById("msgError");
 //Variables regexp
 let validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let lowerCaseLetters = /[a-z]/;
@@ -35,7 +36,23 @@ inputPass.addEventListener("input", () => {
 inputPassEqual.addEventListener("input", () => {
     equalPassword(inputPass, inputPassEqual);
 })
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    msgError.innerHTML = "";
+    if (validateForm()){
+        form.submit();
+    } else {
+        msgError.innerHTML = '<p style="color: red">ERROR: Alguns dels camps no són correctes</p>';
+    }
+})
 //Funcions
+function validateForm() {
+    let valid = true;
+    inputs.forEach(input => {
+        if (input.style.borderColor == "red" || input.style.borderColor == "") { valid = false; }
+    });
+    return valid;
+}
 function checkInputValue(input, index) {
     if (input.value == "") {
         input.style.borderColor = "red";
