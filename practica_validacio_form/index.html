@@ -7,21 +7,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <form action="" method="post">
+    <form action="formulari.php" method="post">
         <label for="inputName">Nom<br>
-            <input type="text" id="inputName" required><br>
+            <input type="text" id="inputName" name="name" required><br>
             <span hidden>Error: el nom no pot estar buit.</span><br>
         </label>
         <label for="inputEmail" id="labelEmail">Email<br>
-            <input type="email" id="inputEmail" required><br>
+            <input type="text" id="inputEmail" name="email" required><br>
             <span id="span1" hidden>Error: l'email no és vàlid.</span><br>
         </label>
         <label for="inputCode">Codi Postal<br>
-            <input type="text" id="inputCode" required><br>
+            <input type="text" id="inputCode" name="code" required><br>
             <span hidden>Error: el codi postal no pot estar buit.</span><br>
         </label>
         <label for="inputPass">Contrassenya<br>
-            <input type="text" id="inputPass" required><br>
+            <input type="text" id="inputPass" name="pass" required><br>
             <ul hidden>
                 <li>8 caràcters mínim</li>
                 <li>1 lletra mayúscula</li>
