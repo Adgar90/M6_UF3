@@ -20,7 +20,7 @@ inputs.forEach((input, index) => {
                 checkInputValue(input, index);
                 break;
             case "inputEmail":
-                validateEmail(inpu, index);
+                validateEmail(input, index);
                 break;
             case "inputCode": 
                 checkInputValue(input, index);
