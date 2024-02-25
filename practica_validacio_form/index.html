@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Form method Post i action al nostre formulari.php -->
     <form action="formulari.php" method="post">
+        <!-- Conté els diferents labels que demana a l'usuari les dades per omplir el form -->
+        <!-- Els spans i la ul estàn ocults i es mostraran mitjançant esdeveniments desde el -->
+        <!-- script. S'ocultaràn de nou quan compleixin els requeriments. -->
         <label for="inputName">Nom<br>
             <input type="text" id="inputName" name="name" required><br>
             <span hidden>Error: el nom no pot estar buit.</span><br>

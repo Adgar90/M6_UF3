@@ -1,3 +1,4 @@
+<!-- Agafem els values de la nostra variable global $_POST el qual rep a través del form -->
 <?php
     $name = $_POST["name"];
     $email = $_POST["email"];
@@ -12,6 +13,7 @@
     <title>Resposta Form</title>
 </head>
 <body>
+    <!-- Mostrem les dades en una llista desordenada -->
     <h1>Dades que rebem a través del formulari:</h1>
     <ul>
         <li><?php echo $name ?></li>
