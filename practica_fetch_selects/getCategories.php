@@ -1,14 +1,8 @@
 <?php
     include('db_connection.php');
 
-    //Inserts a categories
-    // $insert = 'INSERT INTO categories (`nom`) VALUES ("cat1")';
-    // mysqli_query($conn, $insert);
-    
-    
     $select = 'SELECT * FROM categories';
     $result = mysqli_query($conn, $select);
-   
     
     $return = array();
     //Creació d'objecte per afegir les dades de les categories

@@ -1,9 +1,8 @@
 <?php
+    //include per fer servir la connexió
     include('db_connection.php');
+    //agafem el value que rep per method post
     $id_cat = $_POST['cat'];
-    // Inserts a subcategoria
-    // $insert = 'INSERT INTO subcategories (`nom`, `cat`) VALUES ("subcat11", '.$result['id'].')';
-    // mysqli_query($conn, $insert);
 
     $select = "SELECT * FROM `subcategories` WHERE cat=".$id_cat;
     $result = mysqli_query($conn, $select);
