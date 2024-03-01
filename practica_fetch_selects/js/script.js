@@ -3,39 +3,37 @@ let categories = document.getElementById("categories");
 //com a opcions en el select de categories
 fetch("getCategories.php")
     .then((response) => response.json())
-    .then((data) => { 
+    .then((data) => {
         data.forEach(categoria => {
-            let opt = documentc.reateElement("option");
+            let opt = document.createElement("option");
             opt.value = categoria.id;
             opt.text = categoria.nom;
             categories.appendChild(opt);
         });
-        //Esdeveniment que crida la funció per mostra les subcategories de cada categoria
+        // Esdeveniment que crida la funció per mostra les subcategories de cada categoria
         categories.addEventListener("change", function() {
-            mostraSubcategories(this.value) 
-        }); 
-        categories.dispatchEvent(new Event('change')); 
+            mostraSubcategories();
+        });
+         categories.dispatchEvent(new Event('change'));
     })
     .catch ((error) => {
-        console.log(error); 
-    });
-
-//Funció mostraSubcategories, que rep la id de la categoria i crea un formData
-//per enviar per POST a getSubcategories.php i consultar a la base de dades les
-//subcategories per cada id que rep
-function mostraSubcategories(value) {
+        console.log(error);
+});
+function mostraSubcategories() {
+    let arr = [];
+    categories.childNodes.forEach((e) => { if (e.selected) arr.push(e.value); });
+    let str = separaAmbComes(arr);
     let formData = new FormData();
-    console.log(value);
-    formData.append("cat", value);
+    formData.append('cat', str);
     let options = {
         method: 'POST',
         body: formData
-    }
+    };
     let subcategories = document.getElementById("subcategories");
     subcategories.innerHTML = "";
     fetch("getSubcategories.php", options)
     .then((response) => response.json())
-    .then((data) => { 
+    .then((data) => {
         data.forEach(element => {
             let opt = document.createElement("option");
             opt.value = element.id;
@@ -44,6 +42,46 @@ function mostraSubcategories(value) {
         });
     })
     .catch ((error) => {
-        console.log(error); 
+        console.log(error);
     });
 }
+
+function separaAmbComes(arr){
+    let str = "";
+    for (let i=0; i<arr.length; i++) {
+        if (i==arr.length-1) {
+            str+=arr[i];
+        } else {
+            str+=`${arr[i]},`
+        }
+    }
+    return str;
+}
+
+//Funció mostraSubcategories, que rep la id de la categoria i crea un formData
+//per enviar per POST a getSubcategories.php i consultar a la base de dades les
+//subcategories per cada id que rep
+// function mostraSubcategories(value) {
+//     let formData = new FormData();
+//     console.log(value);
+//     formData.append("cat", value);
+//     let options = {
+//         method: 'POST',
+//         body: formData
+//     }
+//     let subcategories = document.getElementById("subcategories");
+//     subcategories.innerHTML = "";
+//     fetch("getSubcategories.php", options)
+//     .then((response) => response.json())
+//     .then((data) => {
+//         data.forEach(element => {
+//             let opt = document.createElement("option");
+//             opt.value = element.id;
+//             opt.text = element.nom;
+//             subcategories.appendChild(opt);
+//         });
+//     })
+//     .catch ((error) => {
+//         console.log(error);
+//     });
+// }

@@ -4,7 +4,7 @@
     //agafem el value que rep per method post
     $id_cat = $_POST['cat'];
 
-    $select = "SELECT * FROM `subcategories` WHERE cat=".$id_cat;
+    $select = "SELECT * FROM `subcategories` WHERE cat in (".$id_cat.")";
     $result = mysqli_query($conn, $select);
     
     $return = array();
