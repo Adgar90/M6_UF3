@@ -14,7 +14,7 @@ fetch("getCategories.php")
         categories.addEventListener("change", function() {
             mostraSubcategories();
         });
-         categories.dispatchEvent(new Event('change'));
+        //  categories.dispatchEvent(new Event('change'));
     })
     .catch ((error) => {
         console.log(error);
