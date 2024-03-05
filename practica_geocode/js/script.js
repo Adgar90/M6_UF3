@@ -1,5 +1,4 @@
 // Variables
-let bcnLoc = { lat: 41.390205, lng: 2.154007}
 let buttonAdr = document.getElementById("findLoc");
 let buttonCtr = document.getElementById("centerLoc");
 let actualZoom = 12;
@@ -16,9 +15,9 @@ fetch("data.json")
         console.log(error);
     })
 
-async function initMap(loc) {
+async function initMap() {
     //Constant de prova per definir les coordenades el map & marker
-    const myLatLng = loc;
+    const myLatLng = { lat: 41.390205, lng: 2.154007 };
     //Importem la llibreria de Google Maps
     //@ts-ignore
     const { Map } = await google.maps.importLibrary("maps");
@@ -101,4 +100,4 @@ buttonAdr.addEventListener("click", () => { geocalitza(); });
 buttonCtr.addEventListener("click", () => { centraMap(); });
 
 //Iniciem en Barcelona
-initMap(bcnLoc);
+initMap();
