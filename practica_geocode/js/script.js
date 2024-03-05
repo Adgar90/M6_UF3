@@ -5,6 +5,16 @@ let buttonAdr = document.getElementById("findLoc");
 let buttonCtr = document.getElementById("centerLoc");
 let actualZoom = 12;
 let map;
+let mapStyle;
+//Fetch data styling wizard map
+fetch("data.json")
+    .then((response) => response.json())
+    .then((data) => {
+        mapStyle = data;
+    })
+    .catch((error) => {
+        console.log(error);
+    })
 
 async function initMap(loc) {
     //Constant de prova per definir les coordenades el map & marker
@@ -17,10 +27,17 @@ async function initMap(loc) {
     map = new Map(document.getElementById("map"), {
         center: myLatLng,
         zoom: actualZoom,
+        styles: mapStyle
     });
-    new google.maps.Marker({
+    let marker = new google.maps.Marker({
         position: myLatLng,
         map,
+    });
+    let infowindow = new google.maps.InfoWindow({
+        content: document.getElementById("adreca").value
+    });
+    marker.addListener("click", () => {
+        infowindow.open(map, marker);
     });
 }
 //Funció que amb el value de l'input 'adreca' renderitza el map a les coordenades adequades
@@ -29,7 +46,6 @@ function geocalitza() {
     let geocoder = new google.maps.Geocoder();
     let address = document.getElementById("adreca").value;
     geocoder.geocode( { 'address': address }, function (results, status) {
-        alert(status);
         if (status == google.maps.GeocoderStatus.OK) {
             latitude = results[0].geometry.location.lat();
             longitude = results[0].geometry.location.lng();
@@ -65,6 +81,7 @@ function centraMap() {
             new google.maps.Marker({
                 position: pos,
                 map: map,
+                icon: 'img/baby.png'
             });
         });
     }
