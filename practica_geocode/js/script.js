@@ -1,10 +1,10 @@
-
 // Variables
 let bcnLoc = { lat: 41.390205, lng: 2.154007}
 let buttonAdr = document.getElementById("findLoc");
 let buttonCtr = document.getElementById("centerLoc");
 let actualZoom = 12;
 let map;
+let marker;
 let mapStyle;
 //Fetch data styling wizard map
 fetch("data.json")
@@ -29,7 +29,7 @@ async function initMap(loc) {
         zoom: actualZoom,
         styles: mapStyle
     });
-    let marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
         position: myLatLng,
         map,
     });
@@ -52,8 +52,8 @@ function geocalitza() {
             //Actualitzem els values dels inputs latitude i longitude
             actualitzaInputs(latitude, longitude);
             actualZoom = 16;
-            //Inicialitzem la localització
-            initMap({ lat: latitude, lng: longitude });
+            //Inicialitzem la localització cridant la funció updatePositionMap
+            updatePositionMap({lat: latitude, lng: longitude });
         } else {
             //Si l'status no és .OK mostra alert d'error
             alert('Direcció invàlida o no trobada');
@@ -64,6 +64,15 @@ function geocalitza() {
 function actualitzaInputs(lat, long) {
     document.getElementById("latitude").value = lat;
     document.getElementById("longitude").value = long;
+}
+//Funció que actualitza la posició del mapa
+function updatePositionMap(pos) {
+    map.setCenter(pos);
+    map.setZoom(actualZoom);
+    marker = new google.maps.Marker({
+        position: pos,
+        map,
+    });
 }
 //Funció que centra el mapa en les coordenades actuals en que en trobes
 //i et mostra la teva localització
@@ -76,9 +85,9 @@ function centraMap() {
             };
 
             map.setCenter(pos);
-            map.setZoom(9);
+            map.setZoom(20);
 
-            new google.maps.Marker({
+            marker = new google.maps.Marker({
                 position: pos,
                 map: map,
                 icon: 'img/baby.png'
