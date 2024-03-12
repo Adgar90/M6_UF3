@@ -47,6 +47,7 @@ $conn->close();
                 </div>
                 
                 <input type="hidden" name="addEdit" id="addEdit" value="0"/>
+                <input type="hidden" name="state" id="state" value=""/>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form> 
         </div>
@@ -107,6 +108,8 @@ $conn->close();
         btnRemove.forEach((el)=>{
             el.addEventListener("click", function(){
                 let form = document.getElementById("myForm");
+                document.getElementById("state").value = "remove";
+                document.getElementById("addEdit").value = this.getAttribute("idProd");
                 form.submit();
             })
         })
