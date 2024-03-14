@@ -41,12 +41,12 @@ $conn->close();
         <div class="col">
             <h2 class="mb-3">Formulari</h2>
 
-            <form id="myForm" action="ex2AddEdit.php" method="POST">
+            <form id="myForm" action="ex2AddEditRemove.php" method="POST">
                 <div class="form-group mb-2">
                     <input type="text" class="form-control" id="nomProducte" name="nomProducte" placeholder="Nom" value="">
                 </div>
                 
-                <input type="hidden" name="addEdit" id="addEdit" value="0"/>
+                <input type="hidden" name="id" id="id" value="0"/>
                 <input type="hidden" name="state" id="state" value=""/>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form> 
@@ -99,17 +99,20 @@ $conn->close();
                 .then((data) => {
                     console.log(data);
                     document.getElementById("nomProducte").value = data.nom;
-                    document.getElementById("addEdit").value = data.addEdit;
+                    document.getElementById("id").value = data.id;
                 })
                 .catch((error) => {});
 
             })
         })
+        //forEach dels buttons de remove
         btnRemove.forEach((el)=>{
+            //Afegim esdeveniment onclick on actualitzem els valors del state a remove i seleccionem la id de l'element
             el.addEventListener("click", function(){
                 let form = document.getElementById("myForm");
                 document.getElementById("state").value = "remove";
-                document.getElementById("addEdit").value = this.getAttribute("idProd");
+                document.getElementById("id").value = this.getAttribute("idProd");
+                //Fem submit del nostre form amb els valors que volem passar
                 form.submit();
             })
         })

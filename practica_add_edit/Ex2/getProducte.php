@@ -21,7 +21,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $row = $result->fetch_assoc();
         $object = new stdClass();
         $object->nom = $row["nom"];
-        $object->addEdit = $row["id"];
+        $object->id = $row["id"];
        
         echo json_encode($object);
 
