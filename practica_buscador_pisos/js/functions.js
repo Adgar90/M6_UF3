@@ -1,5 +1,3 @@
-let divsFeedback = document.querySelectorAll(".feedback");
-console.log(divsFeedback[2]);
 
 function validateNIF_NIE(value){
   var validChars = 'TRWAGMYFPDXBNJZSQVHLCKET';
@@ -30,6 +28,13 @@ function validateEmail(mail) {
   return false;
 }
 
+function validatePhone(phone) {
+  if (/^[0-9]{9}$/.test(phone)){
+    return true;
+  }
+  return false;
+}
+
 //Evitem que el botó faci submit
 $('#form-user-register').submit(function(e) {
   e.preventDefault();
@@ -40,25 +45,27 @@ function isEmpty(value){
   return value == "";
 }
 let inputs = document.querySelectorAll("input");
+let feedbackDivs = document.querySelectorAll(".feedback");
 
-inputs.forEach(input => {
-  input.addEventListener("focusout", () => {
-    comprovaInput(input);
+inputs.forEach((input, index) => {
+  $(input).on("focusout", () => {
+    comprovaInput(input, index);
   });
-
-  input.addEventListener("input", () => {
-    comprovaInput(input);
+  $(input).on("input", () => {
+    comprovaInput(input, index);
   });
-})
+});
 
 //Funció que afegeix o remou les classes valid & invalid segons els paràmetres que rep
-function AddRemoveClass(valid, input) {
+function AddRemoveClass(valid, input, index) {
   if (valid) {
     input.classList.remove("is-invalid");
     input.classList.add("is-valid");
+    AddRemoveFeedBack(valid, feedbackDivs[index])
   } else {
     input.classList.remove("is-valid");
     input.classList.add("is-invalid");
+    AddRemoveFeedBack(valid, feedbackDivs[index])
   }
 }
 //Funció que afegeix o remou les classes valid & invalid feedback segons els paràmetres que rep
@@ -66,37 +73,58 @@ function AddRemoveFeedBack(valid, div) {
   if (valid) {
     div.classList.remove("invalid-feedback");
     div.classList.add("valid-feedback");
+    div.innerText = "";
   } else {
     div.classList.remove("valid-feedback");
     div.classList.add("invalid-feedback");
-    div.innerText = "EERRORRRRR";
+    insertFeedbackMessage(div);
   }
 
 
 }
 //Funció que segons la id de l'input realitza unes comprovacions o unes altres
-function comprovaInput(input){
+function comprovaInput(input, index){
+  let valid = false;
   if (!isEmpty(input.value)) {
     switch (input.id) {
       case "validationDNI":
         if (validateNIF_NIE(input.value)) {  
-          AddRemoveClass(true, input);
-        } else {
-          AddRemoveClass(false, input);
+          valid = true;
         }
         break;
       case "validationEmail":
         if (validateEmail(input.value)) {
-          AddRemoveClass(true, input);
-        } else {
-          AddRemoveClass(false, input);
+          valid = true;
+        }
+        break;
+      case "validationTelf":
+        console.log(validatePhone(input.value))
+        if (validatePhone(input.value)) {
+          valid = true;
         }
         break;
       default:
-        AddRemoveClass(true, input);
+        valid = true;
         break;
     }
-  } else {
-    AddRemoveClass(false, input);
+  } 
+  AddRemoveClass(valid, input, index);
+}
+
+//Funció per definir missatge d'error segons el camp del form
+function insertFeedbackMessage(div){
+  switch(div.id){
+    case "feedbackDNI":
+        div.innerText = "El DNI no és vàlid";
+      break;
+    case "feedbackEmail":
+        div.innerText = "No és un email vàlid";
+      break;
+    case "feedbackTelf":
+        div.innerText = "No és un número de teléfon correcte";
+      break;
+    default:
+        div.innerText = "Aquest camp no pot estar buit";
+      break;
   }
 }
