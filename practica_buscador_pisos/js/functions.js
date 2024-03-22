@@ -40,10 +40,7 @@ $('#form-user-register').submit(function(e) {
   e.preventDefault();
 });
 
-//Funció true is empty, false if not
-function isEmpty(value){
-  return value == "";
-}
+
 let inputs = document.querySelectorAll("input");
 let feedbackDivs = document.querySelectorAll(".feedback");
 
@@ -56,6 +53,27 @@ inputs.forEach((input, index) => {
   });
 });
 
+$('#btnUsername').on("click", () => {
+  generateUserName();
+})
+//Funció per generar un User Name segons les dades de l'usuari
+function generateUserName() {
+  let nom = document.getElementById("validationNom").value;
+  let cognom = document.getElementById("validationCognoms").value.replace(" ", "");
+  let dni = document.getElementById("validationDNI").value;
+  //1era lletra de nom + 4 de cognom + senars de DNI
+  let userName = nom[0].toLowerCase();
+  userName += cognom.substr(0,1).toUpperCase();
+  userName += cognom.substr(1,3).toLowerCase();
+  for (let i=0; i<dni.length; i++) {
+    if (i % 2 === 0) { userName+=dni[i]; }
+  }
+  document.getElementById("validationUsername").value = userName;
+}
+//Funció true is empty, false if not
+function isEmpty(value){
+  return value == "";
+}
 //Funció que afegeix o remou les classes valid & invalid segons els paràmetres que rep
 function AddRemoveClass(valid, input, index) {
   if (valid) {
@@ -98,7 +116,6 @@ function comprovaInput(input, index){
         }
         break;
       case "validationTelf":
-        console.log(validatePhone(input.value))
         if (validatePhone(input.value)) {
           valid = true;
         }

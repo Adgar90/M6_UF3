@@ -8,7 +8,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/functions.js"></script>
 </head>
 
 <body>
@@ -81,7 +80,7 @@
 
 						<div class="col-4">
 							<label for="">Districte</label>
-							<select class="custom-select">
+							<select class="custom-select" id="districte">
 								<option selected>Open this select menu</option>
 								<option value="1">One</option>
 								<option value="2">Two</option>
@@ -91,7 +90,7 @@
 
 						<div class="col-4">
 							<label for="">Barri</label>
-							<select class="custom-select">
+							<select class="custom-select" id="barris">
 								<option selected>Open this select menu</option>
 								<option value="1">One</option>
 								<option value="2">Two</option>
@@ -136,7 +135,7 @@
 
 			<div class="col-6 pt-5">
 				<h4 id="nomPis">Nom + barri, districte</h4>
-				<p id="dir">Via Nom Número Pis Escala Porta · CP · Districte · Barri · Pobliacio</p>
+				<p id="dir">Via Nom Número Pis Escala Porta · CP · Districte · Barri · Poblacio</p>
 				<p id="preu">300€</p>
 				<p>Text</p>
 
@@ -146,4 +145,5 @@
 
 
 </body>
+<script src="js/functions-pisos.js"></script>
 </html>
