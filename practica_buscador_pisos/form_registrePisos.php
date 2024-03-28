@@ -42,29 +42,29 @@
 
 						<div class="col-4">
 							<label for="">Nom</label>
-							<input type="text" class="form-control" id="">
+							<input type="text" class="form-control" id="nom">
 						</div>
 
 						<div class="col-4">
 							<label for="">Número</label>
-							<input type="text" class="form-control" id="">
+							<input type="text" class="form-control" id="number">
 						</div>
 					</div>
 
 					<div class="form-row mb-4">
 						<div class="col-4">
 							<label for="">Pis</label>
-							<input type="text" class="form-control" id="">
+							<input type="text" class="form-control" id="pis">
 						</div>
 
 						<div class="col-4">
 							<label for="">Escala</label>
-							<input type="text" class="form-control" id="">
+							<input type="text" class="form-control" id="escala">
 						</div>
 
 						<div class="col-4">
 							<label for="">Porta</label>
-							<input type="text" class="form-control" id="">
+							<input type="text" class="form-control" id="porta">
 						</div>
 					</div>
 					
@@ -75,7 +75,7 @@
 					<div class="form-row mb-4">
 						<div class="col-4">
 							<label for="">CP</label>
-							<input type="text" class="form-control" id="">
+							<input type="text" class="form-control" id="cp">
 						</div>
 
 						<div class="col-4">
@@ -102,7 +102,7 @@
 					<div class="form-row mb-4">
 						<div class="col-4">
 							<label for="">Població</label>
-							<select class="custom-select">
+							<select class="custom-select" id="poblacio">
 								<option selected>Open this select menu</option>
 								<option value="1">One</option>
 								<option value="2">Two</option>
