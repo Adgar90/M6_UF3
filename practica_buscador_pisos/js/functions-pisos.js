@@ -4,8 +4,8 @@ $("#barris").prop("disabled", true);
 
 let districtes = document.getElementById("districte");
 districtes.innerHTML = "";
-//Fetch que rep les dades de categories de la base de dades i les mostra
-//com a opcions en el select de categories
+//Fetch que rep les dades dels districtes de la base de dades i les mostra
+//com a opcions en el select de districte
 fetch("getDistrictes.php")
     .then((response) => response.json())
     .then((data) => { 
@@ -15,7 +15,7 @@ fetch("getDistrictes.php")
             option.text = districte.name;
             districtes.appendChild(option);
         });
-        //Esdeveniment que crida la funció per mostra les subcategories de cada categoria
+        //Esdeveniment que crida la funció per mostra els barris de cada districte amb jQuery
         $(districtes).on("change", function() { mostraBarris(this.value); })
         districtes.dispatchEvent(new Event('change')); 
     })
@@ -23,9 +23,9 @@ fetch("getDistrictes.php")
         console.log(error); 
     });
 
-//Funció mostraSubcategories, que rep la id de la categoria i crea un formData
-//per enviar per POST a getSubcategories.php i consultar a la base de dades les
-//subcategories per cada id que rep
+//Funció mostraBarris, que rep la id del districte i crea un formData
+//per enviar per POST a getBarris.php i consultar a la base de dades els
+//barris per cada id que rep
 function mostraBarris(value) {
     let formData = new FormData();
     console.log(value);
