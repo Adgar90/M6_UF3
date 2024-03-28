@@ -51,3 +51,46 @@ function mostraBarris(value) {
         console.log(error); 
     });
 }
+
+//prevent submit del form
+$('#form-user-register').submit(function(e) { e.preventDefault(); });
+
+
+//Visualització de les dades
+/* 
+    h4 --> Nom + barri, districte
+    p --> Via + Nom + Número + Pis + Escala + Porta · CP · Districte · Barri · Poblacio
+    p --> preu
+    p --> text
+*/
+$('.btn-info').on("click", () => {
+    //Dades 
+    let nomPis = document.getElementById("inputNomPis").value;
+    let preu = document.getElementById("inputPreu").value;
+    let direccio = document.getElementById("nomDir").value;
+    let num = document.getElementById("number").value; 
+    let pis = document.getElementById("pis").value;
+    let escala = document.getElementById("escala").value;
+    let porta = document.getElementById("porta").value;
+    let cp = document.getElementById("cp").value;
+    let text = document.getElementById("text").value; 
+    let via;
+    //jQuery que recorre les opcions per agafar el valor de l'element seleccionat
+    $('#via option').each( function() { if(this.selected) via = this.innerText; })
+    let districte;
+    $('#districte option').each( function() { if(this.selected) districte = this.innerText; })
+    let barri;
+    $('#barris option').each( function() { if(this.selected) barri = this.innerText; })
+    let poblacio;
+    $('#poblacio option').each( function() { if(this.selected) poblacio = this.innerText; })
+    //elements per les dades
+    let h4_nomPis = document.getElementById("nomPis");
+    let p_direccio = document.getElementById("dir");
+    let p_preu = document.getElementById("preu");
+    let p_text = p_preu.nextElementSibling;
+
+    h4_nomPis.innerText = `${nomPis}, ${barri}, ${districte}`;
+    p_direccio.innerText = `${via} ${direccio}, ${num}, ${pis}, Escala ${escala}, Porta ${porta} · ${cp} · ${districte} · ${barri} · ${poblacio}`;
+    p_preu.innerText = `${preu}€`;
+    p_text.innerText = text;
+});

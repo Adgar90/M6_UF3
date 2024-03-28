@@ -20,20 +20,19 @@
 					<div class="form-row mt-5 mb-4">
 						<div class="col-8">
 							<label for="">Nom*</label>
-							<input type="text" class="form-control" id="" value="" name="">
+							<input type="text" class="form-control" id="inputNomPis" value="" name="">
 						</div>
 
 						<div class="col-4">
 							<label for="">Preu*</label>
-							<input type="text" class="form-control" id="" value="" name="">
+							<input type="text" class="form-control" id="inputPreu" value="" name="">
 						</div>	
 					</div>
 					
 					<div class="form-row mb-4">
 						<div class="col-4">
 							<label for="">Via</label>
-							<select class="custom-select">
-								<option selected>Open this select menu</option>
+							<select class="custom-select" id="via">
 								<option value="1">Carrer</option>
 								<option value="2">Torrent</option>
 								<option value="3">Avinguda</option>
@@ -42,7 +41,7 @@
 
 						<div class="col-4">
 							<label for="">Nom</label>
-							<input type="text" class="form-control" id="nom">
+							<input type="text" class="form-control" id="nomDir">
 						</div>
 
 						<div class="col-4">
@@ -103,10 +102,9 @@
 						<div class="col-4">
 							<label for="">Població</label>
 							<select class="custom-select" id="poblacio">
-								<option selected>Open this select menu</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<option value="1">Barcelona</option>
+								<option value="2">Badalona</option>
+								<option value="3">Hospitalet de Llobregat</option>
 							</select>
 						</div>
 
@@ -122,7 +120,7 @@
 					</div>
 
 					<div class="form-row mb-4">
-						<textarea>
+						<textarea id="text">
 
 						</textarea>
 					</div>
