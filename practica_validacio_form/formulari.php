@@ -16,10 +16,10 @@
     <!-- Mostrem les dades en una llista desordenada -->
     <h1>Dades que rebem a través del formulari:</h1>
     <ul>
-        <li><?php echo $name ?></li>
-        <li><?php echo $email ?></li>
-        <li><?php echo $code ?></li>
-        <li><?php echo $pass ?></li>
+        <li>Nom: <?php echo $name ?></li>
+        <li>Email: <?php echo $email ?></li>
+        <li>Codi Postal: <?php echo $code ?></li>
+        <li>Contrassenya: <?php echo $pass ?></li>
     </ul>
 </body>
 </html>
