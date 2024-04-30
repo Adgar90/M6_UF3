@@ -5,7 +5,7 @@ fetch("getCategories.php")
     .then((response) => response.json())
     .then((data) => { 
         data.forEach(categoria => {
-            let opt = documentc.reateElement("option");
+            let opt = document.createElement("option");
             opt.value = categoria.id;
             opt.text = categoria.nom;
             categories.appendChild(opt);
